@@ -12,7 +12,7 @@ public class BaseTest {
 
     protected static RequestSpecification SPEC;
 
-    @BeforeClass //(beforClass vs beforeTest)
+    //@BeforeClass //(beforClass vs beforeTest)
     public void baseSetup() {
         if (SPEC == null) {
             SPEC = new RequestSpecBuilder()
