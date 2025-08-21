@@ -1,10 +1,10 @@
-package org.example.tests.dummyTest;
+package org.example.dummyTest;
 
 import org.example.models.BoardResponse;
+import org.example.tests.Specifications;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.requestSpecification;
 
 public class myFirstTest {
 

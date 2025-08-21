@@ -1,32 +1,31 @@
 package org.example.tests;
 
 import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
-import io.restassured.specification.RequestSpecification;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
+import org.example.steps.*;
 import org.testng.annotations.BeforeClass;
 
 import static org.testng.Assert.assertEquals;
 
-public class BaseTest {
+public abstract class BaseTest {
 
-    protected static RequestSpecification SPEC;
+    protected final BuildRequest build = new BuildRequest();
+    protected final SendRequest send = new SendRequest();
+    protected final CheckResponseIsValid check = new CheckResponseIsValid();
+    protected final PrepareActualResponse prepare = new PrepareActualResponse();
+    protected final CheckActualVsExpected compare = new CheckActualVsExpected();
 
-    //@BeforeClass //(beforClass vs beforeTest)
-    public void baseSetup() {
-        if (SPEC == null) {
-            SPEC = new RequestSpecBuilder()
-                    .setBaseUri("https://api.trello.com/1")
-                    .setContentType(ContentType.JSON)
-                    .addQueryParam("key", System.getenv("TRELLO_KEY"))
-                    .addQueryParam("token", System.getenv("TRELLO_TOKEN"))
-                    .build();
-        }
-        RestAssured.requestSpecification = SPEC;
-    }
+    @BeforeClass
+    public void setUp() {
+        RestAssured.baseURI = "https://api.trello.com/";
 
-    // Пример общей базовой валидации
-    protected void assertStatus(int actual, int expected) {
-        assertEquals(actual, expected, "Unexpected HTTP status");
+        Specifications.installSpecification(
+                Specifications.requestSpec(RestAssured.baseURI),
+                Specifications.responseSpec200());
+
+        // логи (очень помогают)
+        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
     }
 }
+
