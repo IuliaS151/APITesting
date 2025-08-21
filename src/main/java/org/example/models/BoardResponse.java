@@ -1,10 +1,12 @@
 package org.example.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BoardResponse {
         private String id;
         private String name;
         private String desc;
-
 
     public BoardResponse(String id, String name, String desc) {
         this.id = id;
@@ -12,15 +14,19 @@ public class BoardResponse {
         this.desc = desc;
     }
 
-    public String getId() {
-        return id;
+    public BoardResponse(){
+
     }
 
-    public String getName() {
-        return name;
-    }
+    public void setId(String id) {  this.id = id;   }
 
-    public String getDesc() {
-        return desc;
-    }
+    public void setName(String name) {  this.name = name;   }
+
+    public void setDesc(String desc) {  this.desc = desc;   }
+
+    public String getId() {     return id;  }
+
+    public String getName() {   return name;    }
+
+    public String getDesc() {   return desc;    }
 }

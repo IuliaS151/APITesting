@@ -5,11 +5,17 @@ import java.util.Map;
 import java.util.Objects;
 
 public class BuildRequest {
+
     public Map<String, Object> createBoardParams(String name, String desc, boolean defaultLists) {
         Map<String, Object> p = new HashMap<>();
         p.put("name", name);
         if (desc != null && !desc.isEmpty()) p.put("desc", desc);
         p.put("defaultLists", defaultLists);
+        return p;
+    }
+    public Map<String, Object> boardIdPathParams(String id) {
+        Map<String, Object> p = new HashMap<>();
+        p.put("id", id);
         return p;
     }
 
