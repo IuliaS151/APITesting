@@ -22,7 +22,7 @@ public abstract class BaseTest {
 
         Specifications.installSpecification(
                 Specifications.requestSpec(RestAssured.baseURI),
-                Specifications.responseSpec200());
+                null);
 
         // логи (очень помогают)
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());

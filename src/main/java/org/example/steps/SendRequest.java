@@ -40,9 +40,9 @@ public class SendRequest {
                 .response();
     }
 
-    public Response delete(String path, Map<String, ?> queryParams) {
+    public Response delete(String path, Map<String, ?> pathParams) {
         return given()
-                .queryParams(queryParams)
+                .pathParams(pathParams)
                 .when()
                 .delete(path)
                 .then()
