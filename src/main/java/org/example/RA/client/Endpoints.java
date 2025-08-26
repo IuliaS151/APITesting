@@ -1,4 +1,4 @@
-package org.example.client;
+package org.example.RA.client;
 
 public class Endpoints {
     private Endpoints() {}

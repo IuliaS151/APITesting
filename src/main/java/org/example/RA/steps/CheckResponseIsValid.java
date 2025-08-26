@@ -1,4 +1,4 @@
-package org.example.steps;
+package org.example.RA.steps;
 
 import io.restassured.response.Response;
 import static org.testng.Assert.assertEquals;

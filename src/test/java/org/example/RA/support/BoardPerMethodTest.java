@@ -1,9 +1,9 @@
-package org.example.tests.support;
+package org.example.RA.support;
 
 import io.restassured.response.Response;
-import org.example.client.Endpoints;
-import org.example.models.BoardResponse;
-import org.example.tests.BaseTest;
+import org.example.RA.client.Endpoints;
+import org.example.RA.models.BoardResponse;
+import org.example.RA.BaseTest;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 

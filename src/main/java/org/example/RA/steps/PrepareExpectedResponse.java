@@ -1,6 +1,6 @@
-package org.example.steps;
+package org.example.RA.steps;
 
-import org.example.models.BoardResponse;
+import org.example.RA.models.BoardResponse;
 
 public class PrepareExpectedResponse {
 
