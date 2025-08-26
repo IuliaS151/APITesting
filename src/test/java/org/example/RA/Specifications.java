@@ -1,4 +1,4 @@
-package org.example.tests;
+package org.example.RA;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;

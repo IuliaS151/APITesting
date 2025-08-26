@@ -1,7 +1,7 @@
 package org.example.dummyTest;
 
-import org.example.models.BoardResponse;
-import org.example.tests.Specifications;
+import org.example.RA.models.BoardResponse;
+import org.example.RA.Specifications;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;

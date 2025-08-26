@@ -1,10 +1,10 @@
-package org.example.tests.boards;
+package org.example.RA.boards;
 
 import io.restassured.response.Response;
-import org.example.client.Endpoints;
-import org.example.models.BoardResponse;
-import org.example.steps.PrepareExpectedResponse;
-import org.example.tests.support.BoardPerMethodTest;
+import org.example.RA.client.Endpoints;
+import org.example.RA.models.BoardResponse;
+import org.example.RA.steps.PrepareExpectedResponse;
+import org.example.RA.support.BoardPerMethodTest;
 import org.testng.annotations.Test;
 
 public class UpdateBoardTest extends BoardPerMethodTest {

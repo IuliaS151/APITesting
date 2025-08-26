@@ -1,11 +1,10 @@
-package org.example.tests.boards;
+package org.example.RA.boards;
 
 import io.restassured.response.Response;
-import org.example.client.Endpoints;
-import org.example.models.BoardResponse;
-import org.example.steps.BuildRequest;
-import org.example.steps.PrepareExpectedResponse;
-import org.example.tests.BaseTest;
+import org.example.RA.client.Endpoints;
+import org.example.RA.models.BoardResponse;
+import org.example.RA.steps.PrepareExpectedResponse;
+import org.example.RA.BaseTest;
 import org.testng.annotations.Test;
 
 import java.util.Map;
@@ -13,7 +12,7 @@ import java.util.Map;
 public class CreateBoardTest extends BaseTest {
 
     @Test
-    public void createBoard_ok() {
+    public void createBoard() {
         Map<String, Object> params =
                 build.createBoardParams("ApiTestBoard", "Created from RA", false);
 

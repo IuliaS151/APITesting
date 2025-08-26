@@ -1,9 +1,9 @@
-package org.example.tests;
+package org.example.RA;
 
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
-import org.example.steps.*;
+import org.example.RA.steps.*;
 import org.testng.annotations.BeforeClass;
 
 import static org.testng.Assert.assertEquals;
@@ -18,6 +18,7 @@ public abstract class BaseTest {
 
     @BeforeClass
     public void setUp() {
+        RestAssured.reset();
         RestAssured.baseURI = "https://api.trello.com/";
 
         Specifications.installSpecification(
