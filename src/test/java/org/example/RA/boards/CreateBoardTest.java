@@ -25,7 +25,5 @@ public class CreateBoardTest extends BaseTest {
 
         compare.compareBoardIgnoringId(created, expected);
         send.delete(Endpoints.BOARDS_BY_ID, build.boardIdPathParams(created.getId()));
-
-
     }
 }

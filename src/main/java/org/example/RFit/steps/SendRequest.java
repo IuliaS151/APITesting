@@ -27,7 +27,7 @@ public class SendRequest {
         return api.updateBoardMultiParams(id, params).execute();
     }
 
-    public Response<BoardResponse> deleteBoard(String id) throws IOException {
+    public Response<Void> deleteBoard(String id) throws IOException {
         return api.deleteBoard(id).execute();
     }
 }

@@ -12,11 +12,11 @@ public class PrepareExpectedResponse {
     }
 
     public BoardResponse boardWithId(String id, String name, String desc) {
-        BoardResponse expexted = new BoardResponse();
-        expexted.setId(id);
-        expexted.setName(name);
-        expexted.setDesc(desc);
+        BoardResponse expected = new BoardResponse();
+        expected.setId(id);
+        expected.setName(name);
+        expected.setDesc(desc);
 
-        return expexted;
+        return expected;
     }
 }
