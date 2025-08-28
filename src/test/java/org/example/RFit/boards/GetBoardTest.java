@@ -9,8 +9,13 @@ public class GetBoardTest extends BaseTest {
 
     @Test
     public void getBoardTest() throws Exception {
-        Response<BoardResponse> response = send.getBoard(boardId);
+        Response<BoardResponse> getResponse = send.getBoard(boardId);
+        check.statusIs(getResponse, 200);
 
+        BoardResponse got = prepare.asPojo(getResponse);
+        BoardResponse expect = expected.boardWithId(boardId, initialName, initialDesc);
+
+        compare.compareBoard(got, expect);
     }
 
 }

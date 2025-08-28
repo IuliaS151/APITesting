@@ -16,6 +16,8 @@ public class BaseTest {
     protected final CheckActualVsExpectedResponses compare = new CheckActualVsExpectedResponses();
 
     protected String boardId;
+    protected String initialName;
+    protected String initialDesc;
 
     protected boolean needFreshBoard() {    return true;    }
 
@@ -28,6 +30,8 @@ public class BaseTest {
 
         BoardResponse created = prepare.asPojo(createInitialBoard);
         boardId = created.getId();
+        initialName = created.getName();
+        initialDesc = created.getDesc();
     }
 
     @AfterMethod(alwaysRun = true)
