@@ -3,20 +3,18 @@ package org.example.RA.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BoardResponse {
+public class Board {
         private String id;
         private String name;
         private String desc;
 
-    public BoardResponse(String id, String name, String desc) {
+    public Board(String id, String name, String desc) {
         this.id = id;
         this.name = name;
         this.desc = desc;
     }
 
-    public BoardResponse(){
-
-    }
+    public Board(){}
 
     public void setId(String id) {  this.id = id;   }
 

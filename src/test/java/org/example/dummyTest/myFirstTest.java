@@ -1,6 +1,6 @@
 package org.example.dummyTest;
 
-import org.example.RA.models.BoardResponse;
+import org.example.RA.models.Board;
 import org.example.RA.Specifications;
 import org.testng.annotations.Test;
 
@@ -15,11 +15,11 @@ public class myFirstTest {
 
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpec200());
 
-        BoardResponse board = given()
+        Board board = given()
                 .when()
                 .pathParam("id", "68a30acb1c754466e971e1b6")
                 .get("1/boards/{id}")
                 .then().log().all()
-                .extract().body().jsonPath().getObject("root", BoardResponse.class);
+                .extract().body().jsonPath().getObject("root", Board.class);
     }
 }

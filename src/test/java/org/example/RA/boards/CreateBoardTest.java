@@ -2,28 +2,40 @@ package org.example.RA.boards;
 
 import io.restassured.response.Response;
 import org.example.RA.client.Endpoints;
-import org.example.RA.models.BoardResponse;
-import org.example.RA.steps.PrepareExpectedResponse;
+import org.example.RA.models.Board;
 import org.example.RA.BaseTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import java.util.Map;
 
 public class CreateBoardTest extends BaseTest {
 
+    private String boardId;
+
+    @AfterMethod(alwaysRun = true)
+    public void deleteBoard() {
+        if (boardId != null && !boardId.isEmpty()) {
+            send.delete(Endpoints.BOARDS_BY_ID, boardId);
+            boardId = null;
+        }
+    }
+
     @Test
-    public void createBoard() {
-        Map<String, Object> params =
-                build.createBoardParams("ApiTestBoard", "Created from RA", false);
+    public void shouldCreateBoardSuccessfully() {
+        Map<String, String> params =
+                build.createBoardParams("ApiTestBoard", "Created from RA by POST", false);
 
         Response resp = send.post(Endpoints.BOARDS, params);
         check.statusIs(resp, 200);
 
-        BoardResponse created = prepare.asPojo(resp, BoardResponse.class);
-        BoardResponse expected = new PrepareExpectedResponse()
-                .createBoard("ApiTestBoard", "Created from RA");
-
+        Board created = prepare.asPojo(resp, Board.class);
+        Board expected = expect
+                .createBoard("ApiTestBoard", "Created from RA by POST");
         compare.compareBoardIgnoringId(created, expected);
-        send.delete(Endpoints.BOARDS_BY_ID, build.boardIdPathParams(created.getId()));
+
+        boardId = created.getId();
     }
+
+
 }

@@ -1,17 +1,17 @@
-package org.example.RA.steps;
+package org.example.OkHttp.steps;
 
-import org.example.RA.models.Board;
+import org.example.OkHttp.models.BoardResponse;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CheckActualVsExpected {
 
-    public void compareBoard(Board actual, Board expected) {
+    public void compareBoard(BoardResponse actual, BoardResponse expected) {
         assertThat(actual.getId()).isEqualTo(expected.getId());
         assertThat(actual.getName()).isEqualTo(expected.getName());
         assertThat(actual.getDesc()).isEqualTo(expected.getDesc());
     }
 
-    public void compareBoardIgnoringId(Board actual, Board expected) {
+    public void compareBoardIgnoringId(BoardResponse actual, BoardResponse expected) {
         assertThat(actual.getName()).isEqualTo(expected.getName());
         assertThat(actual.getDesc()).isEqualTo(expected.getDesc());
     }

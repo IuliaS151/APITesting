@@ -4,11 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BuildRequest {
-    public Map<String, String> createBoardParams(String name, String desc, boolean defaultLists) {
+    public Map<String, String> createBoardParams(String desc, Boolean defaultLists) {
         Map<String, String> p = new HashMap<>();
-        p.put("name", name);
         if (desc != null && !desc.isEmpty()) p.put("desc", desc);
-        p.put("defaultLists", String.valueOf(defaultLists));
+        if (defaultLists != null) p.put("defaultLists", String.valueOf(defaultLists));
 
         return p;
     }

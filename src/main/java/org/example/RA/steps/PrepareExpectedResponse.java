@@ -1,18 +1,18 @@
 package org.example.RA.steps;
 
-import org.example.RA.models.BoardResponse;
+import org.example.RA.models.Board;
 
 public class PrepareExpectedResponse {
 
-    public BoardResponse createBoard(String name, String desc) {
-        BoardResponse expected = new BoardResponse();
+    public Board createBoard(String name, String desc) {
+        Board expected = new Board();
         expected.setName(name);
         expected.setDesc(desc);
         return expected;
     }
 
-    public BoardResponse boardWithId(String id, String name, String desc){
-        BoardResponse expected = new BoardResponse();
+    public Board boardWithId(String id, String name, String desc){
+        Board expected = new Board();
         expected.setId(id);
         expected.setName(name);
         expected.setDesc(desc);
