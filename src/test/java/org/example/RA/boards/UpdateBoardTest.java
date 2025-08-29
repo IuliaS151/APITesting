@@ -1,7 +1,7 @@
 package org.example.RA.boards;
 
 import io.restassured.response.Response;
-import org.example.RA.BaseTest;
+import org.example.RA.support.BaseTest;
 import org.example.RA.client.Endpoints;
 import org.example.RA.models.Board;
 import org.example.RA.steps.PrepareExpectedResponse;

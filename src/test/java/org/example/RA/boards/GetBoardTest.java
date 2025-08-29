@@ -1,15 +1,12 @@
 package org.example.RA.boards;
 
 import io.restassured.response.Response;
-import org.example.RA.BaseTest;
+import org.example.RA.support.BaseTest;
 import org.example.RA.client.Endpoints;
 import org.example.RA.models.Board;
-import org.example.RA.support.BoardPerMethodTest;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

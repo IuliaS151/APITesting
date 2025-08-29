@@ -1,4 +1,4 @@
-package org.example.RA;
+package org.example.RA.support;
 
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
