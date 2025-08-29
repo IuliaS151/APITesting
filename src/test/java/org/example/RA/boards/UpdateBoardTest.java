@@ -34,7 +34,7 @@ public class UpdateBoardTest extends BaseTest {
     }
 
     @Test
-    public void updateBoard() {
+    public void shouldUpdateBoardSuccessfully() {
         Response put = send.put(
                 Endpoints.BOARDS_BY_ID,
                 build.boardIdPathParams(boardId),

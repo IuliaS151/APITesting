@@ -34,7 +34,7 @@ public class GetBoardTest extends BaseTest {
     }
 
     @Test
-    public void getBoard() {
+    public void shouldGetBoardByIdSuccessfully() {
         Response resp = send.get(
                 Endpoints.BOARDS_BY_ID,
                 build.boardIdPathParams(boardId)
