@@ -1,4 +1,4 @@
-package org.example.RA;
+package org.example.RA.support;
 
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
@@ -14,6 +14,7 @@ public abstract class BaseTest {
     protected final SendRequest send = new SendRequest();
     protected final CheckResponseIsValid check = new CheckResponseIsValid();
     protected final PrepareActualResponse prepare = new PrepareActualResponse();
+    protected final PrepareExpectedResponse expect = new PrepareExpectedResponse();
     protected final CheckActualVsExpected compare = new CheckActualVsExpected();
 
     @BeforeClass

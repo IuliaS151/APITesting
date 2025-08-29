@@ -6,24 +6,33 @@ import java.util.Objects;
 
 public class BuildRequest {
 
-    public Map<String, Object> createBoardParams(String name, String desc, boolean defaultLists) {
-        Map<String, Object> p = new HashMap<>();
-        p.put("name", name);
-        if (desc != null && !desc.isEmpty()) p.put("desc", desc);
-        p.put("defaultLists", defaultLists);
-        return p;
+    private static void putIfNotBlank(Map<String, String> map, String key, String value) {
+        if (value != null && !value.isEmpty()) map.put(key, value);
     }
-    public Map<String, Object> boardIdPathParams(String id) {
-        Map<String, Object> p = new HashMap<>();
-        p.put("id", id);
-        return p;
+    private static void putIfNotNull(Map<String, String> map, String key, Boolean value) {
+        if (value != null) map.put(key, Boolean.toString(value));
     }
 
-    public Map<String, Object> updateBoardParams(String newName, String newDesc, Boolean closed) {
-        Map<String, Object> p = new HashMap<>();
-        if(newName != null && !newName.isEmpty()) p.put("name", newName);
-        if(newDesc != null) p.put("desc", newDesc);
-        if(closed != null) p.put("closed", closed);
+    public Map<String, String> createBoardParams(String name, String desc, boolean defaultLists) {
+        Map<String, String> p = new HashMap<>();
+
+        putIfNotBlank(p,"name", name);
+        putIfNotBlank(p, "desc", desc);
+        p.put("defaultLists", Boolean.toString(defaultLists));
+
+        return p;
+    }
+    public String boardIdPathParams(String id) {
+        return id;
+    }
+
+    public Map<String, String> updateBoardParams(String newName, String newDesc, Boolean closed) {
+        Map<String, String> p = new HashMap<>();
+
+        putIfNotBlank(p, "name", newName);
+        putIfNotBlank(p, "desc", newDesc);
+        putIfNotNull(p, "closed", closed);
+
         return p;
     }
 }

@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 
 public class SendRequest {
 
-    public Response post(String path, Map<String, ?> queryParams) {
+    public Response post(String path, Map<String, String> queryParams) {
         return given()
                 .queryParams(queryParams)
                 .when()
@@ -19,9 +19,10 @@ public class SendRequest {
                 .response();
     }
 
-    public Response get(String path, Map<String, ?> pathParams) {
+    // нет смысла делать мап, гет-у нужен тольео id
+    public Response get(String path, String id) {
         return given()
-                .pathParams(pathParams)
+                .pathParams("id", id)
                 .when()
                 .get(path)
                 .then()
@@ -29,9 +30,9 @@ public class SendRequest {
                 .response();
     }
 
-    public Response put(String path, Map<String, ?> queryParams, Map<String, ?> pathParams) {
+    public Response put(String path, String id, Map<String, String> queryParams) {
         return given()
-                .pathParams(pathParams)
+                .pathParams("id", id)
                 .queryParams(queryParams)
                 .when()
                 .put(path)
@@ -40,9 +41,10 @@ public class SendRequest {
                 .response();
     }
 
-    public Response delete(String path, Map<String, ?> pathParams) {
+    // также как гет
+    public Response delete(String path, String id) {
         return given()
-                .pathParams(pathParams)
+                .pathParams("id", id)
                 .when()
                 .delete(path)
                 .then()
