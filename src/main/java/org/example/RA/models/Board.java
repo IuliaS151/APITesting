@@ -7,6 +7,9 @@ public class Board {
         private String id;
         private String name;
         private String desc;
+        private String shortUrl;
+        private Prefs prefs;
+
 
     public Board(String id, String name, String desc) {
         this.id = id;
@@ -16,15 +19,23 @@ public class Board {
 
     public Board(){}
 
-    public void setId(String id) {  this.id = id;   }
+    public void setId(String id)                {   this.id = id;   }
 
-    public void setName(String name) {  this.name = name;   }
+    public void setName(String name)            {   this.name = name;   }
 
-    public void setDesc(String desc) {  this.desc = desc;   }
+    public void setDesc(String desc)            {   this.desc = desc;   }
 
-    public String getId() {     return id;  }
+    public void setShortUrl(String shortUrl)    {   this.shortUrl = shortUrl;   }
 
-    public String getName() {   return name;    }
+    public void setPrefs(Prefs prefs)           {   this.prefs = prefs;    }
 
-    public String getDesc() {   return desc;    }
+    public String getId()       {   return id;  }
+
+    public String getName()     {   return name;    }
+
+    public String getDesc()     {   return desc;    }
+
+    public String getShortUrl() {   return shortUrl;    }
+
+    public Prefs getPrefs()     {   return prefs;   }
 }
