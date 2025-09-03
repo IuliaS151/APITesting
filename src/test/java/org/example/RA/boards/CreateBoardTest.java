@@ -1,6 +1,5 @@
 package org.example.RA.boards;
 
-import io.restassured.response.Response;
 import org.example.RA.client.Endpoints;
 import org.example.RA.models.Board;
 import org.example.RA.support.BaseTest;
@@ -48,23 +47,5 @@ public class CreateBoardTest extends BaseTest {
         Assert.assertNotNull(createdBoard.getId());
         Assert.assertEquals(createdBoard.getName(), name);
         Assert.assertEquals(createdBoard.getDesc(), desc);
-
-        /*Assert.assertTrue(resp.time() < 2_000, "API must respond <2s");
-
-        Board created = prepare.asPojo(response, Board.class);
-        Board expected = expect
-                .createBoard("ApiTestBoard", "Created from RA by POST");
-        compare.compareBoardIgnoringId(created, expected); // AssertJ
-
-        assertThat(resp.getHeader("Content-Type")).contains("application/json");
-
-        Map<String, Object> json = resp.as(new TypeRef<Map<String, Object>>() {});
-
-        String id = (String) json.get("id");
-        String shortUrl = (String) json.get("shortUrl");
-
-        assertThat(id).matches("[\\w\\d]{8,}");
-        assertThat(shortUrl).contains("trello.com");
-        */
     }
 }
