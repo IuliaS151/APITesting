@@ -50,6 +50,30 @@
             <version>2.13.5</version>
         </dependency>
 
+        <!-- API -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.2</version>
+
+        </dependency>
+
+        <!-- Engine (чтобы mvn test запускал JUnit 5) -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.2</version>
+
+        </dependency>
+
+        <!-- Params (для @ParameterizedTest и @CsvFileSource) -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.10.2</version>
+
+        </dependency>
+
         <!-- Retrofit 2 + OkHttp (Java 8 совместимость) -->
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>

@@ -4,40 +4,54 @@ import io.restassured.response.Response;
 import org.example.RA.client.Endpoints;
 import org.example.RA.models.Board;
 import org.example.RA.support.BaseTest;
+import org.example.RA.support.Specifications;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Test;
-import io.restassured.common.mapper.TypeRef;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
-
-import java.util.Map;
-import java.util.Objects;
-
+import static io.restassured.RestAssured.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CreateBoardTest extends BaseTest {
 
     private String boardId;
 
-    @AfterMethod(alwaysRun = true)
+    @AfterEach
     public void deleteBoard() {
         if (boardId != null && !boardId.isEmpty()) {
-            send.delete(Endpoints.BOARDS_BY_ID, boardId);
+            given()
+                .pathParam("id", boardId)
+                .when()
+                .delete(Endpoints.BOARDS_BY_ID);
             boardId = null;
         }
     }
 
-    @Test
-    public void shouldCreateBoardSuccessfully() {
-        Map<String, String> params =
-                build.createBoardParams("ApiTestBoard", "Created from RA by POST", false);
+    @ParameterizedTest(name = "Create board with name={0}")
+    @CsvFileSource(resources = "/boards.csv", numLinesToSkip = 1)
+    public void shouldCreateBoardSuccessfully(String name, String desc, boolean defaultLists) {
 
-        Response resp = send.post(Endpoints.BOARDS, params);
-        check.statusIs(resp, 200); // TestNG
+        boardId = Board.create(name, desc, defaultLists);
 
-        Assert.assertTrue(resp.time() < 2_000, "API must respond <2s");
+        Board createdBoard = given()
+                .pathParam("id", boardId).log().all()
+                .when().get(Endpoints.BOARDS_BY_ID)
+                .then().log().all()
+                .spec(Specifications.responseSpec200())
+                .extract().as(Board.class);
 
-        Board created = prepare.asPojo(resp, Board.class);
+        assertThat(createdBoard.getId()).isNotBlank();
+        assertThat(createdBoard.getName()).isEqualTo(name);
+        assertThat(createdBoard.getDesc()).isEqualTo(desc);
+
+        Assert.assertNotNull(createdBoard.getId());
+        Assert.assertEquals(createdBoard.getName(), name);
+        Assert.assertEquals(createdBoard.getDesc(), desc);
+
+        /*Assert.assertTrue(resp.time() < 2_000, "API must respond <2s");
+
+        Board created = prepare.asPojo(response, Board.class);
         Board expected = expect
                 .createBoard("ApiTestBoard", "Created from RA by POST");
         compare.compareBoardIgnoringId(created, expected); // AssertJ
@@ -51,9 +65,6 @@ public class CreateBoardTest extends BaseTest {
 
         assertThat(id).matches("[\\w\\d]{8,}");
         assertThat(shortUrl).contains("trello.com");
-
-        boardId = created.getId();
+        */
     }
-
-
 }

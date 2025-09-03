@@ -1,0 +1,5 @@
+name,desc,defaultLists,newName,newDesc
+ApiTestBoard,Created from RA by POST,false,ApiTestBoard_Upd,Updated via RA
+TempBoard,Just a sample,true,TempBoard_Upd,Updated via RA 2
+SprintBoard,Sprint 12 planning,false,SprintBoard_Upd,Planning updated
+FeatureXBoard,For feature X,true,FeatureXBoard_Upd,Updated via PUT
