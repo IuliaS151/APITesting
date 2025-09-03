@@ -20,9 +20,9 @@ public class CreateBoardTest extends BaseTest {
     public void deleteBoard() {
         if (boardId != null && !boardId.isEmpty()) {
             given()
-                .pathParam("id", boardId)
-                .when()
-                .delete(Endpoints.BOARDS_BY_ID);
+                    .pathParam("id", boardId)
+                    .when()
+                    .delete(Endpoints.BOARDS_BY_ID);
             boardId = null;
         }
     }

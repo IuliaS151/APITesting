@@ -1,7 +1,5 @@
 package org.example.RA.boards;
 
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import org.example.RA.support.BaseTest;
 import org.example.RA.client.Endpoints;
 import org.example.RA.models.Board;
@@ -33,12 +31,13 @@ public class GetBoardTest extends BaseTest {
     @CsvFileSource(resources = "/boards.csv", numLinesToSkip = 1)
     public void shouldGetBoardByIdSuccessfully(String name, String desc, boolean defaultLists) {
 
-        String boardId = Board.create(name, desc, defaultLists);
+        boardId = Board.create(name, desc, defaultLists);
 
         Board getBoard = given()
-                .pathParam("id", boardId)
+                .pathParam("id", boardId).log().all()
                 .when().get(Endpoints.BOARDS_BY_ID)
-                .then().spec(Specifications.responseSpec200())
+                .then().log().all()
+                .spec(Specifications.responseSpec200())
                 .extract().as(Board.class);
 
         assertThat(getBoard.getId()).isEqualTo(boardId);

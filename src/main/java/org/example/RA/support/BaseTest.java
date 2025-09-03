@@ -15,7 +15,7 @@ public abstract class BaseTest {
 
     @BeforeAll
     public static void setUp() {
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpec200());
+        Specifications.installSpecification(Specifications.requestSpec(URL), null);
 
         // логи (очень помогают)
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());

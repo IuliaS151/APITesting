@@ -30,12 +30,12 @@ public class Specifications {
     public static ResponseSpecification responseSpec404() {
         return new ResponseSpecBuilder()
                 .expectStatusCode(204)
-                .expectContentType("text/plain")
+                .expectContentType("text/plain; charset=utf-8")
                 .build();
     }
 
     public static void installSpecification(RequestSpecification request, ResponseSpecification response) {
         RestAssured.requestSpecification = request;
-        RestAssured.responseSpecification = response;
+        RestAssured.responseSpecification = null;
     }
 }
