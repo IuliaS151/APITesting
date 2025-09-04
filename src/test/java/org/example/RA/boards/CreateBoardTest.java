@@ -17,7 +17,7 @@ public class CreateBoardTest extends BaseTest {
     private String boardId;
 
     @AfterEach
-    public void deleteBoard() {
+    public void cleanUp() {
         if (boardId != null && !boardId.isEmpty()) {
             given()
                     .pathParam("id", boardId)
