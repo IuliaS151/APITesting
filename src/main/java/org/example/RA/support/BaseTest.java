@@ -17,12 +17,10 @@ public abstract class BaseTest {
     public static void setUp() {
         Specifications.installSpecification(Specifications.requestSpec(URL), null);
 
-        // логи (очень помогают)
-        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
+        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter()); // логи (очень помогают)
     }
     @AfterAll
     public static void tearDown() {
-
         RestAssured.reset();
     }
 }

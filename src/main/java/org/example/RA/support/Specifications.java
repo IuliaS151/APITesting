@@ -7,6 +7,7 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import static org.hamcrest.Matchers.containsString;
 
 public class Specifications {
 
@@ -29,8 +30,8 @@ public class Specifications {
 
     public static ResponseSpecification responseSpec404() {
         return new ResponseSpecBuilder()
-                .expectStatusCode(204)
-                .expectContentType("text/plain; charset=utf-8")
+                .expectStatusCode(404)
+                .expectHeader("Content-Type", containsString("text/plain"))
                 .build();
     }
 
